@@ -9,8 +9,9 @@ class SwarmProxy
     function getUrl($protocol)
     {
         $name = $_SERVER['REQUEST_URI'];
-        $name = str_replace('/bzz.php/', '', $name);
-        $name = str_replace('/bzzr.php/', '', $name);
+        /* $name = str_replace('/bzz.php/', '', $name);
+         $name = str_replace('/bzzr.php/', '', $name);*/
+        $name = basename($name);
         $url = $this->serverUrl . $protocol . ':/' . $name;
 
         return $url;
