@@ -6,11 +6,16 @@ class SwarmProxy
     public $localProxy = '';
     public $requestedContentType = '';
 
-    function getUrl($protocol)
+    function getUrl($protocol, $isPut = false)
     {
         $name = $_SERVER['REQUEST_URI'];
+        $exploded = explode('/', $name);
         $name = basename($name);
-        $url = $this->serverUrl . $protocol . ':/' . $name;
+        if ($isPut) {
+            $url = $this->serverUrl . $protocol . ':/' . $exploded[count($exploded) - 2] . '/' . $name;
+        } else {
+            $url = $this->serverUrl . $protocol . ':/' . $name;
+        }
 
         return $url;
     }
