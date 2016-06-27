@@ -14,12 +14,11 @@ class SwarmProxy
             $name = $isRequestUri;
         }
 
-        //$exploded = explode('/', $name);
-        $name = basename($name);
         if ($isPut) {
             $name = str_replace('/proxy/bzz.php/', '', $name);
             $url = $this->serverUrl . $protocol . ':/' . $name;
         } else {
+            $name = basename($name);
             $url = $this->serverUrl . $protocol . ':/' . $name;
         }
 
